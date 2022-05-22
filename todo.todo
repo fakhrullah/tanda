@@ -1,0 +1,30 @@
+
+✔ `tanda` - Show current package detail @done(22-04-17 06:56)
+
+Flutter:
+    ✔ `tanda major` - Bump major version @done(22-05-13 23:48)
+    ✔ `tanda minor` - Bump minor version @done(22-05-13 23:48)
+    ✔ `tanda patch` - Bump patch version @done(22-05-13 23:48)
+    ✔ `tanda premajor` - Bump premajor version @done(22-05-22 11:34)
+    ✔ `tanda preminor` - Bump preminor version @done(22-05-21 23:02)
+    ✔ `tanda prepatch` - Bump prepatch version @done(22-05-21 01:28)
+    ✔ `tanda prerelease` - Bump prerelease version @done(22-05-21 03:20)
+    ☐ `tanda prerelease --pre-id` - Bump prerelease with specified tag version
+    ☐ `tanda <versionAction> --debug` - Bump <major|minor|patch|etc...> version with debug log
+    ☐ `tanda <versionAction> --dry-run` - Just show result and what will be happen when bump <major|minor|patch|etc...> version
+
+NPM:
+    ☐ `tanda major` - Bump major version
+    ☐ `tanda minor` - Bump minor version
+    ☐ `tanda patch` - Bump patch version
+    ☐ `tanda premajor` - Bump premajor version
+    ☐ `tanda preminor` - Bump preminor version
+    ☐ `tanda prepatch` - Bump prepatch version
+    ☐ `tanda prerelease` - Bump prerelease version
+    ☐ `tanda <versionAction> --debug` - Bump <major|minor|patch|etc...> version with debug log
+    ☐ `tanda <versionAction> --dry-run` - Just show result and what will be happen when bump <major|minor|patch|etc...> version
+
+    
+☐ `tanda --help` - Show help message
+☐ `tanda help` - Show help message. Direct command no flag
+☐ `tanda --debug` - Show debug message
