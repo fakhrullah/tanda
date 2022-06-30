@@ -1,8 +1,10 @@
 # Local use
 installer.sh
+.env
 
 # File uses for development and testing manual
 pubspec.yaml
 package.json
 
+# Generated directories and files
 dist/
