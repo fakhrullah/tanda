@@ -4,3 +4,5 @@ installer.sh
 # File uses for development and testing manual
 pubspec.yaml
 package.json
+
+dist/
