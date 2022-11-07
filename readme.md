@@ -8,6 +8,12 @@ So, I build this tool.
 
 ## How to install
 
+### Snapcraft on Ubuntu (other linux that has snapcraft)
+
+```console
+$ sudo snap install tanda
+```
+
 ## How to use
 
 1. Your flutter project must have `pubspec.yaml`.
