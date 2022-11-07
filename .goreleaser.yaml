@@ -43,3 +43,10 @@ snapcrafts:
     confinement: classic
     channel_templates:
       - stable
+
+release:
+  github:
+    owner: fakhrullah
+    name: tanda
+
+  # draft: true
