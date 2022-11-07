@@ -37,6 +37,9 @@ snapcrafts:
     name: tanda
     publish: true
     summary: Versioning your flutter project follow standard semantic version.
-    # description: `tanda` is a command line tool that will help you versioning your flutter project.
+    description: >
+      `tanda` is a command line tool that will help you versioning your flutter project.
+    # Need to use classic because `tanda` need to read file from other place
+    confinement: classic
     channel_templates:
       - stable
