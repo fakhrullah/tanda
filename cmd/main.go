@@ -36,6 +36,7 @@ func main() {
 	var dryRun bool
 
 	zerolog.SetGlobalLevel(zerolog.InfoLevel)
+	// zerolog.SetGlobalLevel(zerolog.DebugLevel)
 	tanda.SetupLoggerFormat()
 
 	tanda.LogSoftwareDetail()
@@ -44,7 +45,19 @@ func main() {
 	if len(args) == 1 {
 		packageDetail, err := package_detail.GetPackageDetail()
 		if err != nil {
+
+			// When using Snap package
+			// tanda cannot access file not inside HOME dir
+			isSnapAndNotHomeDir := tanda.IsSnapAndNotHomeDir()
+			log.Debug().Msgf("is snap and not home dir %v", isSnapAndNotHomeDir)
+
+			if isSnapAndNotHomeDir {
+				log.Info().Msg("`tanda` is installed with snap (snapcraft), because of snap security, `tanda` cannot read file not inside HOME dir.")
+				log.Info().Msg("You can install using other packager NOT snap (snapcraft).")
+			}
+
 			log.Fatal().Msgf("%v", err)
+
 			return
 		}
 
