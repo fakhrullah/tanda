@@ -40,7 +40,13 @@ snapcrafts:
     description: >
       `tanda` is a command line tool that will help you versioning your flutter project.
     # Need to use classic because `tanda` need to read file from other place
-    confinement: classic
+    # confinement: classic
+    # Using confinement strict with access to home directory interface
+    confinement: strict
+    apps:
+      tanda:
+        plugs:
+          - home
     channel_templates:
       - stable
 
