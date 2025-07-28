@@ -1,6 +1,6 @@
 package tanda
 
-var BuildVersion string = "0.1.6"
+var BuildVersion string = "0.1.7"
 
 // Reset
 var Color_Off string = "\033[0m"
