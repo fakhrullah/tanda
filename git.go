@@ -72,3 +72,74 @@ func AddGitTag(semverVersion string, hash plumbing.Hash) {
 	}
 	log.Debug().Msgf("TagRef: %v", tagRef)
 }
+
+func IsGitCleanIgnoreUntracked() bool {
+	// Open the repository
+	repo, err := git.PlainOpen(".")
+	if err != nil {
+		// return false, fmt.Errorf("failed to open repo: %w", err)
+		log.Error().Msgf("failed to open repo: %w", err)
+		return false
+	}
+
+	// Get the working tree
+	worktree, err := repo.Worktree()
+	if err != nil {
+		// return false, fmt.Errorf("failed to get worktree: %w", err)
+		log.Error().Msgf("failed to get worktree: %w", err)
+		return false
+	}
+
+	// Get the status
+	status, err := worktree.Status()
+	if err != nil {
+		// return false, fmt.Errorf("failed to get status: %w", err)
+		log.Error().Msgf("failed to get status: %w", err)
+		return false
+	}
+
+	// Check if there are any staged or modified files
+	// This ignores untracked files
+	for _, fileStatus := range status {
+		// Check if file is staged or modified (but not untracked)
+		if fileStatus.Staging != git.Untracked && fileStatus.Staging != git.Unmodified {
+			// return false, nil
+			return false
+		}
+		if fileStatus.Worktree != git.Untracked && fileStatus.Worktree != git.Unmodified {
+			// return false, nil
+			return false
+		}
+	}
+
+	return true
+}
+
+func showDirtyFiles(repoPath string) error {
+	repo, err := git.PlainOpen(repoPath)
+	if err != nil {
+		return err
+	}
+
+	worktree, err := repo.Worktree()
+	if err != nil {
+		return err
+	}
+
+	status, err := worktree.Status()
+	if err != nil {
+		return err
+	}
+
+	fmt.Println("Files with uncommitted changes:")
+	for file, fileStatus := range status {
+		if fileStatus.Staging != git.Untracked && fileStatus.Staging != git.Unmodified {
+			fmt.Printf("  %s (staged: %s)\n", file, fileStatus.Staging)
+		}
+		if fileStatus.Worktree != git.Untracked && fileStatus.Worktree != git.Unmodified {
+			fmt.Printf("  %s (worktree: %s)\n", file, fileStatus.Worktree)
+		}
+	}
+
+	return nil
+}

@@ -38,10 +38,15 @@ func ValidateVersionAction(action string) {
 
 func ValidateGitIsClean() {
 	isGitNotClean := !IsGitClean()
+	isGitNotCleanIgnoreUntracked := !IsGitCleanIgnoreUntracked()
 
-	if isGitNotClean {
+	if isGitNotCleanIgnoreUntracked {
 		log.Error().Msg("Current git dir is not clean")
 		log.Info().Msg("You MUST commit or stash all changes before update version")
 		os.Exit(101)
+	}
+
+	if isGitNotClean {
+		log.Warn().Msg("Current git directory is clean but has untracked files")
 	}
 }
