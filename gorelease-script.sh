@@ -1,4 +1,20 @@
 #!/usr/bin/env bash
+# Define the path to your .env file
+ENV_FILE=".env"
+
+# Check if the .env file exists
+if [ -f "$ENV_FILE" ]; then
+    echo "Loading environment variables from $ENV_FILE..."
+    # set -a: Automatically exports all subsequent variables
+    set -a
+    # source: Reads and executes commands from the file in the current shell context
+    . "$ENV_FILE"
+    # set +a: Turns off auto-exporting
+    set +a
+    echo "Environment variables loaded."
+else
+    echo "Warning: .env file not found at $ENV_FILE. Proceeding without it." >&2
+fi
 
 ARG="$1"
 
